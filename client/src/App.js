@@ -14,12 +14,8 @@ function App() {
         <p>
           Instructions: Force your opponent to connect three in a row either horizontally, vertically, or diagonally.
         </p>
-      </header>
-
-      <body>
         <Board />
-      </body>
-      
+      </header>
     </div>
   );
 }
