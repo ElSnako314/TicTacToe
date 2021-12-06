@@ -8,10 +8,10 @@ function App() {
     <div className="App">
 
       <header className="App-header">
-        <h1>
+        <h1 className="title">
           Play Misere Tic Tac Toe
         </h1>
-        <p>
+        <p className="instructions">
           Instructions: Force your opponent to connect three in a row either horizontally, vertically, or diagonally.
         </p>
         <Board />

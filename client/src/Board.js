@@ -89,7 +89,7 @@ function Board() {
     }
 
     return(
-        <div className="board-square">
+        <div className="board">
             {boardBoxes.map((boardBox) => 
                 <BoardSquare
                     key={boardBox.id}
