@@ -6,7 +6,6 @@ function App() {
 
   return (
     <div className="App">
-
       <header className="App-header">
         <h1 className="title">
           Play Misere Tic Tac Toe
@@ -14,7 +13,8 @@ function App() {
         <p className="instructions">
           Instructions: Force your opponent to connect three in a row either horizontally, vertically, or diagonally.
         </p>
-        <Board />
+        <h1 id="win"></h1>
+        <Board className="board"/>
       </header>
     </div>
   );

@@ -49,21 +49,28 @@ function Board() {
             isClicked: false
         },
     ])
-    
+
+    const [isX, setisX] = useState(true)
 
     const turn = (id) => {
         const index = boardBoxes.findIndex( (boardBox) => boardBox.id === id)
-        if (!boardBoxes[index].isClicked) boardBoxes[index].text = "X"
-        boardBoxes[index].isClicked = true
-        setBoardBoxes([...boardBoxes])
+        if (!boardBoxes[index].isClicked) {
+            boardBoxes[index].text = (isX ? "X" : "O")
+            boardBoxes[index].isClicked = true
+            setisX(!isX)
+            setBoardBoxes([...boardBoxes])
 
-        const b = [];
-        for (let i = 0; i < boardBoxes.length; i++) {
-            b[i] = boardBoxes[i].text
+            const b = [];
+            for (let i = 0; i < boardBoxes.length; i++) {
+                b[i] = boardBoxes[i].text
+            }
+
+            console.log(checkwin(b.flat()))
+            if (checkwin(b.flat())) {
+                console.log(":(")
+                won()
+            }
         }
-
-        console.log(checkwin(b.flat()))
-        if (checkwin(b.flat())) console.log("YAS")
     }
 
     function checkwin(boardInLine) {
@@ -86,6 +93,11 @@ function Board() {
             return ti === ta && ta === to
         }
         else return false
+    }
+
+    function won() {
+        var winStatement = document.getElementById('win')
+        winStatement.textContent = "Player " + (isX ? "X" : "O") + ", YOU LOSE"
     }
 
     return(
