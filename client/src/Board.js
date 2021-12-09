@@ -51,6 +51,7 @@ function Board() {
     ])
 
     const [isX, setisX] = useState(true)
+    const [players, setplayers] = useState("")
 
     const turn = (id) => {
         const index = boardBoxes.findIndex( (boardBox) => boardBox.id === id)
@@ -111,6 +112,9 @@ function Board() {
                     turn={turn}
                 />
             )}
+            <h1>
+                
+            </h1>
         </div>
     )
 }
