@@ -5,9 +5,11 @@ const db = require('better-sqlite3')('database.db')
 app.use(express.static('./client/build'))
 app.use(express.json())
 
-/* app.get('/login',(req,res) => {
-    // Something goes here...
-}) */
+app.get('/newgame',(req,res) => {
+    const players = db.prepare("SELECT username FROM users")
+    const player_names = JSON.stringify(players)
+    res.send(player_names)
+})
 
 /* app.get('/newgame',(req,res) => {
     const query = db.prepare("SELECT * FROM books")
@@ -36,6 +38,6 @@ app.get("/initialize",(req,res) => {
     })
 })
 
-app.listen(3000,() => {
+app.listen(8080,() => {
     console.log("server started")
 })

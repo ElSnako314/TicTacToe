@@ -53,6 +53,11 @@ function Board() {
     const [isX, setisX] = useState(true)
     const [players, setplayers] = useState("")
 
+    function setUpGame() {
+        fetch("/newgame")
+            .then(setplayers(res))
+    }
+
     const turn = (id) => {
         const index = boardBoxes.findIndex( (boardBox) => boardBox.id === id)
         if (!boardBoxes[index].isClicked) {
@@ -102,20 +107,25 @@ function Board() {
     }
 
     return(
-        <div className="board">
-            {boardBoxes.map((boardBox) => 
-                <BoardSquare
-                    key={boardBox.id}
-                    id={boardBox.id}
-                    text={boardBox.text}
-                    isClicked={boardBox.isClicked}
-                    turn={turn}
-                />
-            )}
+        <>
             <h1>
-                
+                {setUpGame()}
             </h1>
-        </div>
+            <div className="board">
+                {boardBoxes.map((boardBox) => 
+                    <BoardSquare
+                        key={boardBox.id}
+                        id={boardBox.id}
+                        text={boardBox.text}
+                        isClicked={boardBox.isClicked}
+                        turn={turn}
+                    />
+                )}
+            </div>
+            <h1>
+            hello
+            </h1>
+        </>
     )
 }
 
