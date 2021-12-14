@@ -1,22 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import Board from './Board.js';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <h1 className="title">
+          Play Misere Tic Tac Toe
+        </h1>
+        <p className="instructions">
+          Instructions: Force your opponent to connect three in a row either horizontally, vertically, or diagonally.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 id="win"></h1>
+        <Board className="board"/>
       </header>
     </div>
   );
