@@ -1,5 +1,5 @@
 import BoardSquare from './BoardSquare.js'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function Board() {
     const [boardBoxes, setBoardBoxes] = useState([
@@ -50,15 +50,28 @@ function Board() {
         },
     ])
 
-    const [isX, setisX] = useState(true)
-    const [players, setplayers] = useState("")
+    const [isX, setIsX] = useState(true)
+    const [players, setPlayers] = useState("")
+
+    useEffect(() => {
+        fetch('/newgame')
+            .then(res => res.json())
+            .then(data => {
+                players[0] = data
+                setPlayers()
+            })
+        // var player1 = document.getElementById('player1')
+        // player1.textContent = "Hello"
+        console.log(players)
+        console.log("HI IS THIS WORKING??")
+    },[])
 
     const turn = (id) => {
         const index = boardBoxes.findIndex( (boardBox) => boardBox.id === id)
         if (!boardBoxes[index].isClicked) {
             boardBoxes[index].text = (isX ? "X" : "O")
             boardBoxes[index].isClicked = true
-            setisX(!isX)
+            setIsX(!isX)
             setBoardBoxes([...boardBoxes])
 
             const b = [];
@@ -112,9 +125,8 @@ function Board() {
                     turn={turn}
                 />
             )}
-            <h1>
-                
-            </h1>
+            <h1 id="player1">{players[0]}</h1>
+            <h1 id="player2">{players[1]}</h1>
         </div>
     )
 }

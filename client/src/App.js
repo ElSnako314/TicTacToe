@@ -13,7 +13,7 @@ function App() {
         <p className="instructions">
           Instructions: Force your opponent to connect three in a row either horizontally, vertically, or diagonally.
         </p>
-        <h1 id="win"></h1>
+        <h1 id="win">""</h1>
         <Board className="board"/>
       </header>
     </div>
