@@ -11,13 +11,13 @@ app.get('/newgame',(req,res) => {
     res.send(player_names)
 })
 
-/* app.get('/newgame',(req,res) => {
-    const query = db.prepare("SELECT * FROM books")
-    const books = query.all()
+app.get('/newgame',(req,res) => {
+    const playernames = db.prepare("SELECT username FROM users WHERE user_id = 1")
+    const names = playernames.all()
     res.json({
-        books
+        names
     })
-}) */
+})
 
 /* app.post("/checkout",(req,res) => {
     const {bookId} = req.body
